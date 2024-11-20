@@ -34,5 +34,23 @@ async function getData1() {
     } catch (error) {
         console.error('Error:', error);
     }
-}
+};
 
+async function getData2() {
+let xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://api.coinbase.com/v2/currencies', true);
+
+xhr.onload = function() {
+    if (xhr.status === 200) {
+        console.log(JSON.parse(xhr.responseText));
+    } else {
+        console.error('Error:', xhr.status);
+    }
+};
+
+xhr.onerror = function() {
+    console.error('Request failed');
+};
+
+xhr.send();
+};
